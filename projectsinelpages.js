@@ -181,6 +181,7 @@ const procenttext4 = asoyle.getElementsByClassName("procenttext")[0];
 procenttext4.innerHTML = round(as, 1)+"%";
 
 //Dekkningsgrad
+/*
 const dekningsgrad = wrapper.getElementsByClassName("dekningsgrad")[0];
 dekningsgrad.innerHTML = projectobject.foverskudd+"K"+"/"+projectobject.fsum+"K";
 
@@ -205,7 +206,7 @@ if(dg>100){
 }
 const procenttext5 = dsoyle.getElementsByClassName("procenttext")[0];
 procenttext5.innerHTML = round(dg, 1)+"%";
-
+*/
 //sluttsummer
 
  const ekostnader = wrapper.getElementsByClassName("ekostnader")[0];
