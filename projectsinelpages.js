@@ -185,9 +185,6 @@ const dekningsgrad = wrapper.getElementsByClassName("dekningsgrad")[0];
 dekningsgrad.innerHTML = projectobject.foverskudd+"K"+"/"+projectobject.fsum+"K";
 
 
-
-
-dekningsgrad
 const dsoyle = wrapper.getElementsByClassName("dsoyle")[0];
 const dgasoyle = wrapper.getElementsByClassName("dgasoyle")[0];
 
