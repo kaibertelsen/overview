@@ -180,6 +180,27 @@ if(as>100){
 const procenttext4 = asoyle.getElementsByClassName("procenttext")[0];
 procenttext4.innerHTML = round(as, 1)+"%";
 
+//Dekkningsgrad
+const dsoyle = wrapper.getElementsByClassName("dsoyle")[0];
+const dgasoyle = wrapper.getElementsByClassName("dgasoyle")[0];
+
+
+const dg = (Number(projectobject.foverskudd) / Number(projectobject.fsum)) * 100;
+
+if(isNaN(dg)){
+    dg = 0;
+    dsoyle.style.width = 0+"%";
+    dgasoyle.style.width = 100+"%";
+}
+if(dg>100){
+    dgasoyle.style.width = ((100/as)*100)+"%";
+    dsoyle.style.width = 100+"%";
+}else{
+    dsoyle.style.width = as+"%";
+    dgasoyle.style.width = 100+"%";
+}
+
+
  const ekostnader = wrapper.getElementsByClassName("ekostnader")[0];
    ekostnader.innerHTML = (projectobject.evarekostnad+projectobject.etimekostnad+projectobject.efremmedytelse+projectobject.eandrekostnader)+"K";
    
