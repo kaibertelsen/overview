@@ -182,7 +182,7 @@ procenttext4.innerHTML = round(as, 1)+"%";
 
 //Dekkningsgrad
 
-const dekningsgrad = wrapper.getElementsByClassName("dekningsgrad")[0];
+const dekningsgrad = wrapper.getElementsByClassName("dgwrapperelement")[0];
 dekningsgrad.innerHTML = projectobject.foverskudd+"K"+"/"+projectobject.fsum+"K";
 
 
