@@ -182,12 +182,12 @@ procenttext4.innerHTML = round(as, 1)+"%";
 
 //Dekkningsgrad
 
-const dekningsgrad = wrapper.getElementsByClassName("dgwrapperelement")[0];
+const dekningsgrad = wrapper.getElementsByClassName("dekningsgrad")[0];
 dekningsgrad.innerHTML = projectobject.foverskudd+"K"+"/"+projectobject.fsum+"K";
 
-
-const dsoyle = wrapper.getElementsByClassName("dsoyle")[0];
-const dgasoyle = wrapper.getElementsByClassName("dgasoyle")[0];
+const dgwrapperelement = wrapper.getElementsByClassName("dgwrapperelement")[0];
+const dsoyle = dgwrapperelement.getElementsByClassName("dsoyle")[0];
+const dgasoyle = dgwrapperelement.getElementsByClassName("dgasoyle")[0];
 
 
 const dg = (Number(projectobject.foverskudd) / Number(projectobject.fsum)) * 100;
