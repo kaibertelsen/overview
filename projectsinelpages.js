@@ -200,10 +200,10 @@ if(isNaN(dg)){
     dgasoyle.style.width = 100+"%";
 }
 if(dg>100){
-    dgasoyle.style.width = ((100/as)*100)+"%";
+    dgasoyle.style.width = ((100/dg)*100)+"%";
     dsoyle.style.width = 100+"%";
 }else{
-    dsoyle.style.width = as+"%";
+    dsoyle.style.width = dg+"%";
     dgasoyle.style.width = 100+"%";
 }
 const procenttext5 = dsoyle.getElementsByClassName("procenttext")[0];
