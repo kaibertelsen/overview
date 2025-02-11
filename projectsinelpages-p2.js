@@ -18,10 +18,13 @@ function estimatInfo(projectobject,wrapper){
     const eprosjektpris = wrapper.getElementsByClassName("eprosjektpris")[0];
     var esum = (projectobject.eoverskudd+projectobject.evarekostnad+projectobject.etimekostnad+projectobject.efremmedytelse+projectobject.eandrekostnader);
     
-   eprosjektpris.innerHTML = esum;
-   eprosjektpris.dataset.airtable = projectobject.airtable;
-   
+    eprosjektpris.innerHTML = esum;
+    eprosjektpris.dataset.airtable = projectobject.airtable;
 
+    const dekningsgrad = wrapper.querySelector(".dekningsg");
+    if(dekningsgrad){
+    dekningsgrad.textContent = Number(projectobject.eoverskudd)/esum;
+    }
     const foverskudd = wrapper.getElementsByClassName("foverskudd")[0];
     foverskudd.innerHTML = projectobject.foverskudd;
     
