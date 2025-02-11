@@ -22,9 +22,11 @@ function estimatInfo(projectobject,wrapper){
     eprosjektpris.dataset.airtable = projectobject.airtable;
 
     const dekningsgrad = wrapper.querySelector(".dekningsg");
-    if(dekningsgrad){
-    dekningsgrad.textContent = Number(projectobject.eoverskudd)/esum;
+    if (dekningsgrad) {
+        const percentage = (Number(projectobject.eoverskudd) / esum) * 100;
+        dekningsgrad.textContent = percentage.toFixed(2) + "%";
     }
+    
     const foverskudd = wrapper.getElementsByClassName("foverskudd")[0];
     foverskudd.innerHTML = projectobject.foverskudd;
     
