@@ -39,8 +39,8 @@ function responsgetClient(data,id){
    updateClientdata();  
 
    //oppdater lable
-   if(fields?.Name){
-   document.getElementById("clientnamelable").textContent = fields.Name
+   if(data.fields?.Name){
+   document.getElementById("clientnamelable").textContent = data.fields.Name
    }else{
     document.getElementById("clientnamelable").textContent = "-"
    }
