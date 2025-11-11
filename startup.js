@@ -358,6 +358,8 @@ function gettime(date){
        hightbudgettodayvalue = valutalook(hightbudgettodayvalue);
        hightbudgettoday.innerHTML = hightbudgettodayvalue+"K"; 
          
+       //sette titel på siden
+         document.title = clientobject.Name + " - Oversikt";
    
              
    }
