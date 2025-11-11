@@ -11,7 +11,8 @@ function loadScript(url) {
 // Liste over CDN-URL-er som skal lastes inn
 const cdnScripts = [
     "https://kaibertelsen.github.io/overview/projectsinelpages.js",
-    "https://kaibertelsen.github.io/overview/projectsinelpages-p2.js"
+    "https://kaibertelsen.github.io/overview/projectsinelpages-p2.js",
+     "https://kaibertelsen.github.io/overview/startup.js"
     
 ];
 
