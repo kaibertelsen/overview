@@ -295,8 +295,10 @@ function gettime(date){
         //sjekke om det er prosjektmodul
         if(clientobject.projectmodul){
             document.getElementById("toprojectviewfrommaster").style.display = "block";
+            document.getElementById("projectcardholdercompany").style.display = "block";
         }else{
             document.getElementById("toprojectviewfrommaster").style.display = "none"; 
+            document.getElementById("projectcardholdercompany").style.display = "none";
         }
 
        //customer
