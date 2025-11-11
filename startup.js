@@ -35,7 +35,7 @@ function responsgetUser(data,id){
     //sjekke om det er flere clienter i user da må det komme opp en alert hvor en må hvelge mellom hvilke klienter en ønsker å se  
     if (data.fields?.client && data.fields.client.length>1){
     //vise en selektor for å velge klient
-    showclientselector(data.fields.client);
+    showclientselector(data.fields.client,data.fields.clientname);
     }else{
         
         //laste ned client
@@ -61,35 +61,40 @@ function responsgetUser(data,id){
     
 }
 
-function showclientselector(clientlist){
+function showclientselector(clientIdlist, clientNamelist) {
     const selectordiv = document.getElementById("clientselectordiv");
     selectordiv.innerHTML = "";
+    selectordiv.className = "dark-clientselector-container";
     selectordiv.style.display = "block";
     
     const selectlabel = document.createElement("label");
     selectlabel.textContent = "Velg klient:";
+    selectlabel.className = "dark-clientselector-label";
     selectordiv.appendChild(selectlabel);
     
     const selectelement = document.createElement("select");
     selectelement.id = "clientselect";
+    selectelement.className = "dark-clientselector-select";
     selectordiv.appendChild(selectelement);
     
-    clientlist.forEach(function(clientid){
+    for (let i = 0; i < clientIdlist.length; i++) {
         const option = document.createElement("option");
-        option.value = clientid;
-        option.textContent = "Klient ID: " + clientid;
+        option.value = clientIdlist[i];
+        option.textContent = clientNamelist[i];
         selectelement.appendChild(option);
-    });
+    }
     
     const selectbutton = document.createElement("button");
     selectbutton.textContent = "Velg";
-    selectbutton.onclick = function(){
+    selectbutton.className = "dark-clientselector-button";
+    selectbutton.onclick = function() {
         const selectedclientid = document.getElementById("clientselect").value;
         downloadclientObject(selectedclientid);
         selectordiv.style.display = "none";
     };
     selectordiv.appendChild(selectbutton);
 }
+
 
 
 
