@@ -177,14 +177,7 @@ function responsgetClient(data,id){
    localStorage.setItem("clientobject", JSON.stringify(data.fields));  
    updateClientdata();  
 
-   /*
-   //oppdater lable
-   if(data.fields?.Name){
-   document.getElementById("clientnamelable").textContent = data.fields.Name
-   }else{
-    document.getElementById("clientnamelable").textContent = "-"
-   }
-    */
+ 
 }
 
 
