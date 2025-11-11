@@ -64,13 +64,9 @@ function responsgetUser(data,id){
 function showclientselector(clientIdlist, clientNamelist) {
     const selectordiv = document.getElementById("clientselectordiv");
     selectordiv.innerHTML = "";
+    selectordiv.style.display = "flex";
 
-    // KUN dette på selectordiv: vis/skip + flex
-    selectordiv.style.display = "block";
-
-    // Egen wrapper så vi ikke trenger å style selectordiv
     const wrap = document.createElement("div");
-    // Moderne mørk look (inline styles)
     Object.assign(wrap.style, {
         display: "flex",
         flexDirection: "column",
@@ -86,7 +82,6 @@ function showclientselector(clientIdlist, clientNamelist) {
     });
     selectordiv.appendChild(wrap);
 
-    // Label
     const selectlabel = document.createElement("label");
     selectlabel.textContent = "Velg klient:";
     Object.assign(selectlabel.style, {
@@ -96,7 +91,6 @@ function showclientselector(clientIdlist, clientNamelist) {
     });
     wrap.appendChild(selectlabel);
 
-    // Select
     const selectelement = document.createElement("select");
     selectelement.id = "clientselect";
     selectlabel.htmlFor = "clientselect";
@@ -112,8 +106,8 @@ function showclientselector(clientIdlist, clientNamelist) {
         transition: "box-shadow 160ms ease, border-color 160ms ease"
     });
     selectelement.addEventListener("focus", () => {
-        selectelement.style.borderColor = "#6a8cff";
-        selectelement.style.boxShadow = "0 0 0 4px rgba(106,140,255,0.18)";
+        selectelement.style.borderColor = "#2C3AAE";
+        selectelement.style.boxShadow = "0 0 0 4px rgba(44,58,174,0.25)";
     });
     selectelement.addEventListener("blur", () => {
         selectelement.style.borderColor = "#3a3a3a";
@@ -128,11 +122,10 @@ function showclientselector(clientIdlist, clientNamelist) {
         selectelement.appendChild(option);
     }
 
-    // Knapp
     const selectbutton = document.createElement("button");
     selectbutton.textContent = "Velg";
     Object.assign(selectbutton.style, {
-        background: "linear-gradient(135deg, #6a8cff, #4b5ef0)",
+        background: "#2C3AAE", // din blåfarge 💙
         border: "none",
         color: "#fff",
         fontWeight: "700",
@@ -145,8 +138,8 @@ function showclientselector(clientIdlist, clientNamelist) {
     });
     selectbutton.addEventListener("mouseenter", () => {
         selectbutton.style.transform = "translateY(-2px)";
-        selectbutton.style.boxShadow = "0 6px 18px rgba(90,110,255,0.35)";
-        selectbutton.style.filter = "brightness(1.05)";
+        selectbutton.style.boxShadow = "0 6px 18px rgba(44,58,174,0.4)";
+        selectbutton.style.filter = "brightness(1.1)";
     });
     selectbutton.addEventListener("mouseleave", () => {
         selectbutton.style.transform = "translateY(0)";
@@ -157,11 +150,11 @@ function showclientselector(clientIdlist, clientNamelist) {
     selectbutton.onclick = function () {
         const selectedclientid = document.getElementById("clientselect").value;
         downloadclientObject(selectedclientid);
-        // KUN dette på selectordiv når vi lukker
-        
+        selectordiv.style.display = "none";
     };
     wrap.appendChild(selectbutton);
 }
+
 
 
 
