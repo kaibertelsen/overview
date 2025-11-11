@@ -66,7 +66,7 @@ function showclientselector(clientIdlist, clientNamelist) {
     selectordiv.innerHTML = "";
 
     // KUN dette på selectordiv: vis/skip + flex
-    selectordiv.style.display = "flex";
+    selectordiv.style.display = "block";
 
     // Egen wrapper så vi ikke trenger å style selectordiv
     const wrap = document.createElement("div");
@@ -158,7 +158,7 @@ function showclientselector(clientIdlist, clientNamelist) {
         const selectedclientid = document.getElementById("clientselect").value;
         downloadclientObject(selectedclientid);
         // KUN dette på selectordiv når vi lukker
-        selectordiv.style.display = "none";
+        
     };
     wrap.appendChild(selectbutton);
 }
