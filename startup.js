@@ -1,4 +1,28 @@
 
+
+function userStartupfirstTime(userid){
+if(localStorage.getItem("clientobject")){
+updateClientdata()
+}
+
+if(localStorage.getItem("company")){
+    var userobject = JSON.parse(localStorage.getItem("userobject"));  
+    
+    if (userobject.roll == "user"){
+        if(userobject?.company){
+        listThiscompany(userobject.company[0]);   
+        }
+    }else if (userobject.roll == "admin"){
+        listCardOverview();
+    }
+}
+
+//last ned userobject
+downloadUserObject(userid)
+        
+}
+
+
 function downloadUserObject(userid){
     airtableGet("appcHyn9YLhSAgX0C","tblXfT4OnjC0c3nuw",userid,"responsgetUser");
 }

@@ -21,6 +21,28 @@ cdnScripts.reduce((promise, script) => {
     return promise.then(() => loadScript(script));
 }, Promise.resolve()).then(() => {
     console.log("All scripts loaded");
+
+    //startloadingscreen();
+
+    //sette dato til siste i forrige mnd
+    ontrackMonitoring = findlastdateinpreviousmonth();
+
+    MemberStack.onReady.then(function(member) {
+
+            if (member.loggedIn){
+        console.log("logget inn");
+        document.getElementById("logginnview").style.display = "none";
+        userStartupfirstTime(member.airtable);
+        }else{
+        document.getElementById("logginnview").style.display = "flex";
+        console.log("ikke innlogget");
+        }
+    
+    });
+
+
+
+
 }).catch(error => {
     console.error(error);
 });
