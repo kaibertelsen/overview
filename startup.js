@@ -64,36 +64,105 @@ function responsgetUser(data,id){
 function showclientselector(clientIdlist, clientNamelist) {
     const selectordiv = document.getElementById("clientselectordiv");
     selectordiv.innerHTML = "";
-    selectordiv.className = "dark-clientselector-container";
-    selectordiv.style.display = "block";
-    
+
+    // KUN dette på selectordiv: vis/skip + flex
+    selectordiv.style.display = "flex";
+
+    // Egen wrapper så vi ikke trenger å style selectordiv
+    const wrap = document.createElement("div");
+    // Moderne mørk look (inline styles)
+    Object.assign(wrap.style, {
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+        padding: "20px",
+        width: "min(320px, 90vw)",
+        background: "#1e1e1e",
+        color: "#e6e6e6",
+        border: "1px solid #2e2e2e",
+        borderRadius: "12px",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
+        fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial'
+    });
+    selectordiv.appendChild(wrap);
+
+    // Label
     const selectlabel = document.createElement("label");
     selectlabel.textContent = "Velg klient:";
-    selectlabel.className = "dark-clientselector-label";
-    selectordiv.appendChild(selectlabel);
-    
+    Object.assign(selectlabel.style, {
+        fontSize: "14px",
+        color: "#b8b8b8",
+        letterSpacing: "0.2px"
+    });
+    wrap.appendChild(selectlabel);
+
+    // Select
     const selectelement = document.createElement("select");
     selectelement.id = "clientselect";
-    selectelement.className = "dark-clientselector-select";
-    selectordiv.appendChild(selectelement);
-    
+    selectlabel.htmlFor = "clientselect";
+    Object.assign(selectelement.style, {
+        width: "100%",
+        padding: "10px 12px",
+        borderRadius: "10px",
+        backgroundColor: "#2a2a2a",
+        color: "#f2f2f2",
+        border: "1px solid #3a3a3a",
+        fontSize: "15px",
+        outline: "none",
+        transition: "box-shadow 160ms ease, border-color 160ms ease"
+    });
+    selectelement.addEventListener("focus", () => {
+        selectelement.style.borderColor = "#6a8cff";
+        selectelement.style.boxShadow = "0 0 0 4px rgba(106,140,255,0.18)";
+    });
+    selectelement.addEventListener("blur", () => {
+        selectelement.style.borderColor = "#3a3a3a";
+        selectelement.style.boxShadow = "none";
+    });
+    wrap.appendChild(selectelement);
+
     for (let i = 0; i < clientIdlist.length; i++) {
         const option = document.createElement("option");
         option.value = clientIdlist[i];
         option.textContent = clientNamelist[i];
         selectelement.appendChild(option);
     }
-    
+
+    // Knapp
     const selectbutton = document.createElement("button");
     selectbutton.textContent = "Velg";
-    selectbutton.className = "dark-clientselector-button";
-    selectbutton.onclick = function() {
+    Object.assign(selectbutton.style, {
+        background: "linear-gradient(135deg, #6a8cff, #4b5ef0)",
+        border: "none",
+        color: "#fff",
+        fontWeight: "700",
+        fontSize: "14px",
+        padding: "12px 14px",
+        borderRadius: "10px",
+        cursor: "pointer",
+        width: "100%",
+        transition: "transform 160ms ease, box-shadow 160ms ease, filter 160ms ease"
+    });
+    selectbutton.addEventListener("mouseenter", () => {
+        selectbutton.style.transform = "translateY(-2px)";
+        selectbutton.style.boxShadow = "0 6px 18px rgba(90,110,255,0.35)";
+        selectbutton.style.filter = "brightness(1.05)";
+    });
+    selectbutton.addEventListener("mouseleave", () => {
+        selectbutton.style.transform = "translateY(0)";
+        selectbutton.style.boxShadow = "none";
+        selectbutton.style.filter = "none";
+    });
+
+    selectbutton.onclick = function () {
         const selectedclientid = document.getElementById("clientselect").value;
         downloadclientObject(selectedclientid);
+        // KUN dette på selectordiv når vi lukker
         selectordiv.style.display = "none";
     };
-    selectordiv.appendChild(selectbutton);
+    wrap.appendChild(selectbutton);
 }
+
 
 
 
