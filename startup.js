@@ -4,14 +4,23 @@ function downloadUserObject(userid){
 }
 
 function responsgetUser(data,id){
-  //lagre
-   localStorage.setItem("userobject", JSON.stringify(data.fields));     
-      
-    if(data.fields?.client){
+
+    //lagre
+   localStorage.setItem("userobject", JSON.stringify(data.fields));    
+
+    //sjekke om det er flere clienter i user da må det komme opp en alert hvor en må hvelge mellom hvilke klienter en ønsker å se  
+    if (data.fields?.client && data.fields.client.length>1){
+    //vise en selektor for å velge klient
+    showclientselector(data.fields.client);
+    }else{
+        
         //laste ned client
         downloadclientObject(data.fields.client[0])
+        
+
     }
-    
+
+    //sjekke roll
     if(data.fields?.roll){
         if (data.fields.roll == "user"){
              if(data.fields?.company){
@@ -26,7 +35,39 @@ function responsgetUser(data,id){
     }
     
     
-  }
+}
+
+function showclientselector(clientlist){
+    const selectordiv = document.getElementById("clientselectordiv");
+    selectordiv.innerHTML = "";
+    selectordiv.style.display = "block";
+    
+    const selectlabel = document.createElement("label");
+    selectlabel.textContent = "Velg klient:";
+    selectordiv.appendChild(selectlabel);
+    
+    const selectelement = document.createElement("select");
+    selectelement.id = "clientselect";
+    selectordiv.appendChild(selectelement);
+    
+    clientlist.forEach(function(clientid){
+        const option = document.createElement("option");
+        option.value = clientid;
+        option.textContent = "Klient ID: " + clientid;
+        selectelement.appendChild(option);
+    });
+    
+    const selectbutton = document.createElement("button");
+    selectbutton.textContent = "Velg";
+    selectbutton.onclick = function(){
+        const selectedclientid = document.getElementById("clientselect").value;
+        downloadclientObject(selectedclientid);
+        selectordiv.style.display = "none";
+    };
+    selectordiv.appendChild(selectbutton);
+}
+
+
 
 
 function downloadclientObject(clientid){
@@ -171,7 +212,7 @@ function gettime(date){
         }else{
             document.getElementById("toprojectviewfrommaster").style.display = "none"; 
         }
-        
+
        //customer
        const customer = list.getElementsByClassName("customer")[0];
        var customervalue = round(Number(clientobject.sumcustomervalue), 1);
