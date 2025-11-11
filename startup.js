@@ -164,7 +164,14 @@ function gettime(date){
         if(clientobject.Name){
         document.getElementById("clientnamelable").textContent = clientobject.Name
         }
-     
+
+        //sjekke om det er prosjektmodul
+        if(clientobject.projectmodul){
+            document.getElementById("toprojectviewfrommaster").style.display = "block";
+        }else{
+            document.getElementById("toprojectviewfrommaster").style.display = "none"; 
+        }
+        
        //customer
        const customer = list.getElementsByClassName("customer")[0];
        var customervalue = round(Number(clientobject.sumcustomervalue), 1);
