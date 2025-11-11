@@ -170,6 +170,8 @@ function responsgetClient(data,id){
    localStorage.setItem("clientobject", JSON.stringify(data.fields));  
    updateClientdata();  
 
+   downloadcompanylist(data.fields.airtable);
+
  
 }
 
